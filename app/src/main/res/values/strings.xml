@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Notes</string>
+    <string name="button_save_note">add note</string>
+    <string-array name="days_of_week">
+        <item>ponedelnik</item>
+        <item>vtornik</item>
+        <item>sreda</item>
+        <item>cetverq</item>
+        <item>patnyica</item>
+        <item>subota</item>
+        <item>voskresenye</item>
+    </string-array>
+</resources>
