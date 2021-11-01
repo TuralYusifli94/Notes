@@ -1,6 +1,7 @@
 package com.demo.notes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,15 +11,17 @@ import com.demo.notes.databinding.ActivityAddNoteBinding;
 
 public class AddNoteActivity extends AppCompatActivity {
     private ActivityAddNoteBinding binding;
-    private NotesDatabase database;
+    private MainViewModel viewModel;
+//    private NotesDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityAddNoteBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
-        database = NotesDatabase.getInstance(this);
+//        database = NotesDatabase.getInstance(this);
 
         binding.buttonSaveNote.setOnClickListener(view -> {
             String title = binding.editTextTItle.getText().toString();
@@ -28,7 +31,9 @@ public class AddNoteActivity extends AppCompatActivity {
                 Note note = new Note(title, description, daysOfWeek);
 //                without roomdatabase
 //                MainActivity.notes.add(note);
-                database.notesDao().insertNote(note);
+//                wiyhout viewmodel
+//                database.notesDao().insertNote(note);
+                viewModel.insertNote(note);
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             } else {
